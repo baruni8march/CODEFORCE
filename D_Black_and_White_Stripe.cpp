@@ -5,25 +5,30 @@ int main(){
   int t;
   cin>>t;
   while(t--){
-     int n,k,c=0,p=0,mini=INT_MAX;
+   int n,k;
    cin>>n>>k;
    string s;
    cin>>s;
-   for(int i=0;i<s.length();i++){
-    for(int j=i+1;j<s.length();j++){
-        if(s[i]=='B'){
+
+   int l=0;
+   int c=0;
+   int cost=INT_MAX;
+
+   for(int r=0;r<s.size();r++){
+    if(s[r]=='W'){
         c++;
     }
-    else{
-        c++;
-        p++;
+
+    if(r-l+1==k){
+        cost=min(cost,c);
+
+        if(s[l]=='W'){
+            c--;
+        }
+        l++;
     }
-    if(c==k){
-        break;
-    }
-    }
-    mini=min(mini,p);
    }
-   cout<<mini<<endl;
+
+   cout<<cost<<endl;
   }
 }

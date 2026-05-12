@@ -3,19 +3,16 @@ using namespace std;
 int main(){
 int n,m;
 cin>>n>>m;
-vector<int>v;
+vector<int>v(n);
+int mx=0,ans=0;
 for(int i=0;i<n;i++){
-    int x;
-    cin>>x;
-    if(x>m){
-        v.push_back(i+1);
-    }
+   cin>>v[i];
+   int t=(v[i]+m-1)/m;
+   if(t>=mx){
+    mx=t;
+    ans=i;
+   }
 }
-if(v.size()==0){
-    cout<<n<<endl;
-}
-else{
-    cout<<v[v.size()-1]<<endl;
-}
+cout<<ans+1<<endl;
 
 }
